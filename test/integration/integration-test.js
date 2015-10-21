@@ -79,7 +79,7 @@ describe('Vogels Integration Tests', function() {
     User = vogels.define('vogels-int-test-user', {
       hashKey : 'id',
       schema : {
-        id            : Joi.string().required().default(uuid.v4),
+        id            : Joi.string().required().default(uuid.v4, 'uuid'),
         email         : Joi.string().required(),
         name          : Joi.string(),
         age           : Joi.number().min(10),
@@ -104,7 +104,7 @@ describe('Vogels Integration Tests', function() {
         content           : Joi.string(),
         num               : Joi.number(),
         tag               : Joi.string(),
-        PublishedDateTime : Joi.date().default(Date.now)
+        PublishedDateTime : Joi.date().default(Date.now, 'date')
       },
       indexes : [
         { hashKey : 'UserId', rangeKey : 'PublishedDateTime', type : 'local', name : 'PublishedDateTimeIndex'}
